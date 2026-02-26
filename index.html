@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barakallahu fii umrik✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:'Poppins',sans-serif;
+height:100vh;
+background:radial-gradient(circle at top,#fcefee,#f8dede,#eac7c7);
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+color:#5a4a42;
+position:relative;
+transition:1s ease;
+}
+
+body.night{
+background:radial-gradient(circle at top,#2b2b3c,#1a1a2e,#16213e);
+color:#f5e6e8;
+}
+
+/* Romantic lights */
+.light{
+position:fixed;
+width:5px;height:5px;
+background:#fff;
+border-radius:50%;
+opacity:0.4;
+animation:blink 2s infinite alternate;
+}
+
+@keyframes blink{
+from{opacity:0.2;transform:scale(0.8);}
+to{opacity:1;transform:scale(1.4);}
+}
+
+/* Opening */
+.opening{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:linear-gradient(180deg,#fcefee,#f8dede);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:100;
+transition:1s ease;
+}
+
+.opening.hide{
+opacity:0;
+pointer-events:none;
+}
+
+.opening-content{text-align:center;}
+
+.opening h2{
+font-family:'Playfair Display',serif;
+font-size:1.9em;
+margin-bottom:20px;
+}
+
+.opening button{
+padding:12px 30px;
+border:none;
+border-radius:30px;
+background:#e5989b;
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.opening button:hover{
+transform:scale(1.1);
+background:#d16d82;
+}
+
+/* Card */
+.card{
+width:92%;
+max-width:420px;
+background:rgba(255,255,255,0.65);
+backdrop-filter:blur(20px);
+border-radius:28px;
+overflow:hidden;
+box-shadow:0 30px 90px rgba(214,120,130,0.35);
+opacity:0;
+transform:scale(0.85);
+transition:1.5s ease;
+z-index:10;
+position:relative;
+}
+
+.card.show{
+opacity:1;
+transform:scale(1);
+}
+
+.photo-frame{
+padding:12px;
+background:linear-gradient(135deg,#f8cdda,#f6abb6,#f8cdda);
+}
+
+.photo-frame img{
+width:100%;
+height:340px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 20px 50px rgba(214,120,130,0.4);
+transition:0.6s ease;
+}
+
+.photo-frame img:hover{
+transform:scale(1.05);
+}
+
+.content{
+padding:25px;
+text-align:center;
+}
+
+h1{
+font-family:'Playfair Display',serif;
+font-size:1.8em;
+margin-bottom:15px;
+min-height:50px;
+}
+
+p{
+font-size:0.95em;
+line-height:1.8;
+margin-bottom:14px;
+opacity:0;
+transform:translateY(20px);
+transition:1s ease;
+}
+
+.music-btn{
+margin-top:8px;
+padding:8px 20px;
+border:none;
+border-radius:20px;
+background:#e5989b;
+color:white;
+cursor:pointer;
+font-size:0.85em;
+transition:0.3s;
+}
+
+.music-btn:hover{
+transform:scale(1.1);
+background:#d16d82;
+}
+
+/* Confetti */
+.confetti{
+position:fixed;
+width:8px;height:8px;
+opacity:0.8;
+animation:fallConfetti 3s linear forwards;
+}
+
+@keyframes fallConfetti{
+from{transform:translateY(-10vh) rotate(0deg);}
+to{transform:translateY(100vh) rotate(720deg);}
+}
+
+/* Hearts */
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:18px;
+animation:floatHeart linear forwards;
+opacity:0.8;
+}
+
+@keyframes floatHeart{
+from{transform:translateY(0) scale(1);}
+to{transform:translateY(-110vh) scale(1.5);}
+}
+
+/* Balloon */
+.balloon{
+position:fixed;
+bottom:-150px;
+width:60px;
+height:80px;
+border-radius:50% 50% 45% 45%;
+opacity:0.9;
+animation:floatBalloon linear forwards;
+cursor:pointer;
+}
+
+.balloon::after{
+content:"";
+position:absolute;
+bottom:-40px;
+left:50%;
+width:2px;
+height:40px;
+background:#aaa;
+transform:translateX(-50%);
+}
+
+@keyframes floatBalloon{
+from{transform:translateY(0);}
+to{transform:translateY(-120vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="opening" id="opening">
+  <div class="opening-content">
+    <h2>Untuk Kamu 🤍</h2>
+    <button onclick="openCard()">Buka</button>
+  </div>
+</div>
+
+<audio id="bgm" loop>
+<source src="musik1.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="card">
+<div class="photo-frame">
+<img src="foto1.jpg" alt="Foto">
+</div>
+
+<div class="content">
+<h1 id="title"></h1>
+
+<p class="para">Semoga di usia yang baru ini kamu makin kuat, makin bahagia, dan makin dekat sama semua yang kamu impikan.</p>
+
+<p class="para">Jangan ragu sama diri sendiri, karena kamu jauh lebih hebat dari yang kamu kira.</p>
+
+<p class="para">Terus bersinar ya… karena ada yang diam-diam bangga lihat kamu berkembang.</p>
+
+<button class="music-btn" onclick="toggleMusic()">⏸ Pause Music</button>
+<button class="music-btn" onclick="toggleMode()">🌙 Mode</button>
+<button class="music-btn" onclick="showSecret()">💌 Pesan Rahasia</button>
+
+</div>
+</div>
+
+<script>
+
+/* Night mode auto */
+if(new Date().getHours()>=18){
+document.body.classList.add("night");
+}
+
+/* Romantic lights */
+for(let i=0;i<40;i++){
+let l=document.createElement("div");
+l.classList.add("light");
+l.style.left=Math.random()*100+"vw";
+l.style.top=Math.random()*100+"vh";
+l.style.animationDelay=Math.random()*3+"s";
+document.body.appendChild(l);
+}
+
+/* OPEN */
+function openCard(){
+document.getElementById("opening").classList.add("hide");
+document.getElementById("card").classList.add("show");
+
+let audio=document.getElementById("bgm");
+audio.volume=0;
+audio.play();
+let fade=setInterval(()=>{
+if(audio.volume<1){audio.volume+=0.05;}
+else{clearInterval(fade);}
+},200);
+
+setTimeout(showText,800);
+}
+
+/* Typing */
+function typeWriter(element,text,speed){
+let i=0;
+element.innerHTML="";
+function typing(){
+if(i<text.length){
+element.innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,speed);
+}
+}
+typing();
+}
+
+function showText(){
+const title=document.getElementById("title");
+typeWriter(title,"Selamat Ulang Tahun ✨",80);
+
+const paras=document.querySelectorAll(".para");
+paras.forEach((p,i)=>{
+setTimeout(()=>{
+p.style.opacity="1";
+p.style.transform="translateY(0)";
+if(i===paras.length-1){
+launchConfetti();
+miniFirework();
+}
+},1200*(i+1));
+});
+}
+
+/* Music toggle */
+function toggleMusic(){
+let audio=document.getElementById("bgm");
+let btn=document.querySelectorAll(".music-btn")[0];
+if(audio.paused){
+audio.play();
+btn.innerHTML="⏸ Pause Music";
+}else{
+audio.pause();
+btn.innerHTML="▶ Play Music";
+}
+}
+
+/* Night toggle */
+function toggleMode(){
+document.body.classList.toggle("night");
+}
+
+/* Secret */
+function showSecret(){
+alert("Love you more — from someone who quietly admires you.");
+}
+
+/* Confetti */
+function launchConfetti(){
+for(let i=0;i<80;i++){
+let c=document.createElement("div");
+c.classList.add("confetti");
+c.style.left=Math.random()*100+"vw";
+c.style.background=["#ff8fab","#ffc8dd","#cdb4db","#ffe5ec"][Math.floor(Math.random()*4)];
+c.style.animationDuration=(Math.random()*2+2)+"s";
+document.body.appendChild(c);
+setTimeout(()=>{c.remove();},3000);
+}
+}
+
+/* Mini Firework */
+function miniFirework(){
+for(let i=0;i<30;i++){
+let spark=document.createElement("div");
+spark.style.position="fixed";
+spark.style.width="4px";
+spark.style.height="4px";
+spark.style.background="#fff";
+spark.style.borderRadius="50%";
+spark.style.left="50vw";
+spark.style.top="50vh";
+spark.style.transition="1s ease";
+document.body.appendChild(spark);
+setTimeout(()=>{
+spark.style.transform=`translate(${Math.random()*400-200}px, ${Math.random()*400-200}px)`;
+spark.style.opacity="0";
+},10);
+setTimeout(()=>{spark.remove();},1000);
+}
+}
+
+/* Hearts auto */
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="💗";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*6+6)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},10000);
+}
+setInterval(createHeart,900);
+
+/* Click heart */
+document.addEventListener("click",function(e){
+let heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="💖";
+heart.style.left=e.clientX+"px";
+heart.style.top=e.clientY+"px";
+heart.style.position="fixed";
+heart.style.animationDuration="4s";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},4000);
+});
+
+/* Balloon */
+function createBalloon(){
+const balloon=document.createElement("div");
+balloon.classList.add("balloon");
+const colors=["#ff8fab","#ffc8dd","#ffafcc","#ffe5ec"];
+balloon.style.background=colors[Math.floor(Math.random()*colors.length)];
+balloon.style.left=Math.random()*100+"vw";
+balloon.style.animationDuration=(Math.random()*8+8)+"s";
+
+balloon.addEventListener("click",()=>{
+balloon.style.transition="0.3s";
+balloon.style.transform="scale(1.5)";
+balloon.style.opacity="0";
+setTimeout(()=>{balloon.remove();},300);
+});
+
+document.body.appendChild(balloon);
+setTimeout(()=>{balloon.remove();},15000);
+}
+setInterval(createBalloon,1400);
+
+</script>
+</body>
+</html>
